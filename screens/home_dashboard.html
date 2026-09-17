@@ -1,0 +1,338 @@
+<!DOCTYPE html><html class="dark" lang="en" style=""><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{width:100vw;margin:0;padding:0;background-color:#121315;}body{overscroll-behavior:none;-webkit-font-smoothing:antialiased;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"on-secondary-container":"#00616d","tertiary-fixed":"#ffdeac","text-tertiary":"rgba(255, 255, 255, 0.4)","on-background":"#e3e2e3","surface-container-lowest":"#0d0e0f","on-surface":"#e3e2e3","tertiary-fixed-dim":"#ffba38","text-secondary":"rgba(255, 255, 255, 0.65)","prep-state":"#FFB300","surface-bright":"#38393a","text-primary":"#FFFFFF","pure-black":"#000000","inverse-on-surface":"#303032","surface-glass-elevated":"rgba(255, 255, 255, 0.14)","secondary":"#bdf4ff","tertiary":"#ffba38","rest-active":"#00E5FF","on-secondary-fixed":"#001f24","on-primary-fixed-variant":"#862200","on-primary-fixed":"#3b0900","surface-variant":"#343536","on-tertiary-container":"#3a2600","surface-glass":"rgba(255, 255, 255, 0.08)","outline":"#ab8980","rest-deep":"#1A237E","error-container":"#93000a","inverse-surface":"#e3e2e3","outline-variant":"#5b4039","primary-fixed":"#ffdbd1","inverse-primary":"#b02f00","work-active":"#FF5722","secondary-container":"#00e3fd","tertiary-container":"#c08600","surface-container-low":"#1b1c1d","surface-container-high":"#292a2b","on-tertiary-fixed-variant":"#604100","primary":"#ffb5a0","surface":"#121315","error":"#ffb4ab","secondary-fixed-dim":"#00daf3","surface-container-highest":"#343536","primary-fixed-dim":"#ffb5a0","surface-dim":"#121315","on-primary":"#5f1500","on-secondary":"#00363d","primary-container":"#ff5722","secondary-fixed":"#9cf0ff","edge-highlight":"rgba(255, 255, 255, 0.35)","on-tertiary-fixed":"#281900","work-neon":"#39FF14","on-surface-variant":"#e4beb4","surface-container":"#1f2021","on-primary-container":"#541200","on-secondary-fixed-variant":"#004f58","background":"#121315","surface-tint":"#ffb5a0","on-error":"#690005","on-error-container":"#ffdad6","on-tertiary":"#432c00"},"borderRadius":{"DEFAULT":"1rem","lg":"2rem","xl":"3rem","full":"9999px"},"spacing":{"margin":"1.25rem","gutter-tablet":"1.5rem","space-xl":"2.5rem","gutter":"1rem","space-xs":"0.25rem","margin-desktop":"3rem","space-lg":"1.5rem","gutter-desktop":"2rem","space-md":"1rem","margin-tablet":"2rem","space-sm":"0.5rem"},"fontFamily":{"timer-display-hero":["Space Grotesk"],"headline-md":["Inter"],"display-lg-mobile":["Space Grotesk"],"numeric-metric":["Space Grotesk"],"body-md":["Inter"],"display-lg":["Space Grotesk"],"label-caps-sm":["Inter"],"body-lg":["Inter"],"headline-lg":["Inter"],"timer-display-hero-mobile":["Space Grotesk"],"label-caps-lg":["Inter"]},"fontSize":{"timer-display-hero":["96px",{"lineHeight":"96px","letterSpacing":"-0.04em","fontWeight":"700"}],"headline-md":["22px",{"lineHeight":"28px","letterSpacing":"-0.01em","fontWeight":"600"}],"display-lg-mobile":["36px",{"lineHeight":"40px","letterSpacing":"-0.02em","fontWeight":"600"}],"numeric-metric":["20px",{"lineHeight":"24px","letterSpacing":"-0.01em","fontWeight":"600"}],"body-md":["15px",{"lineHeight":"20px","letterSpacing":"0.005em","fontWeight":"400"}],"display-lg":["48px",{"lineHeight":"52px","letterSpacing":"-0.02em","fontWeight":"600"}],"label-caps-sm":["11px",{"lineHeight":"14px","letterSpacing":"0.08em","fontWeight":"700"}],"body-lg":["17px",{"lineHeight":"24px","letterSpacing":"0em","fontWeight":"400"}],"headline-lg":["28px",{"lineHeight":"34px","letterSpacing":"-0.015em","fontWeight":"600"}],"timer-display-hero-mobile":["64px",{"lineHeight":"68px","letterSpacing":"-0.03em","fontWeight":"700"}],"label-caps-lg":["13px",{"lineHeight":"16px","letterSpacing":"0.06em","fontWeight":"600"}]}}}}</script></head><body class="bg-surface text-on-surface flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-gutter flex items-center justify-between"><div class="flex items-center gap-space-sm"><button aria-label="Go back" class="w-11 h-11 flex items-center justify-center rounded-full bg-surface-container-high/60 text-on-surface hover:bg-surface-container-highest transition-colors" onclick="history.back()"><span class="material-symbols-outlined text-[20px]">arrow_back_ios_new</span></button><h1 class="font-headline-md text-headline-md text-text-primary leading-tight truncate max-w-[150px]">Active Workout</h1></div><div class="flex items-center gap-space-sm"><button aria-label="Mute audio cues" class="w-11 h-11 flex items-center justify-center rounded-full bg-surface-container-high/80 text-text-secondary hover:text-text-primary transition-colors"><span class="material-symbols-outlined text-[20px]">volume_up</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex flex-col relative w-full pt-16 pb-safe bg-surface"><div class="flex flex-col w-full">
+<!-- Subtle Ambient Glow Orbs -->
+<div class="relative w-full overflow-hidden px-margin pb-28 pt-2">
+<div class="pointer-events-none absolute -top-12 right-2 h-56 w-56 rounded-full bg-primary-container/15 blur-3xl"></div>
+<div class="pointer-events-none absolute top-72 -left-12 h-48 w-48 rounded-full bg-rest-active/10 blur-3xl"></div>
+<!-- 1. GREETING & AMBIENT STATUS -->
+<section class="flex flex-col gap-space-xs mt-1 mb-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="inline-flex h-2 w-2 rounded-full bg-work-active animate-pulse"></span>
+<span class="font-label-caps-sm text-label-caps-sm text-text-secondary uppercase">Ready to Train</span>
+</div>
+<div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-high/70 backdrop-blur-md">
+<span class="material-symbols-outlined text-[14px] text-rest-active">headphones</span>
+<span class="font-label-caps-sm text-label-caps-sm text-on-surface">AirPods Connected</span>
+</div>
+</div>
+<div class="flex items-baseline justify-between mt-1">
+<h2 class="font-headline-lg text-headline-lg text-text-primary tracking-tight">Today, October 24</h2>
+<span class="font-label-caps-lg text-label-caps-lg text-primary">Session 24</span>
+</div>
+</section>
+<!-- 2. QUICK START PRIMARY HERO CARD -->
+<section class="relative w-full rounded-lg bg-surface-container-high/60 backdrop-blur-xl p-space-md shadow-xl overflow-hidden mb-space-lg">
+<div class="pointer-events-none absolute -right-16 -top-16 w-44 h-44 rounded-full bg-work-active/20 blur-2xl"></div>
+<!-- Top meta chips -->
+<div class="flex items-center justify-between relative z-10 mb-space-sm">
+<span class="px-2.5 py-1 rounded-full bg-surface-container-highest/80 font-label-caps-sm text-label-caps-sm text-text-secondary tracking-wider uppercase">
+          Last Session • Quick Resume
+        </span>
+<button aria-label="Pin routine" class="w-8 h-8 rounded-full bg-surface-container-highest/60 flex items-center justify-center text-text-secondary active:scale-95 transition-transform" id="hero-favorite-btn">
+<span class="material-symbols-outlined text-[18px]">bookmark</span>
+</button>
+</div>
+<!-- Workout Title & Metrics -->
+<div class="relative z-10">
+<div class="flex items-center justify-between">
+<h3 class="font-display-lg-mobile text-display-lg-mobile text-text-primary tracking-tight">Tabata Extreme</h3>
+<div class="text-right">
+<span class="block font-numeric-metric text-numeric-metric text-text-primary">04:30</span>
+<span class="block font-label-caps-sm text-label-caps-sm text-text-tertiary uppercase">Duration</span>
+</div>
+</div>
+<p class="font-body-md text-body-md text-text-secondary mt-1">High cadence bodyweight sprints</p>
+</div>
+<!-- Visual Interval Graphic & Scheme Breakdown -->
+<div class="relative z-10 my-space-md p-space-sm rounded-DEFAULT bg-surface-container-lowest/80 backdrop-blur-md">
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-caps-sm text-label-caps-sm text-text-tertiary">ROUND INTERVALS (8 SETS)</span>
+<span class="font-label-caps-sm text-label-caps-sm text-work-active font-bold">2:1 RATIO</span>
+</div>
+<!-- Segmented Graphic Representation -->
+<div class="grid grid-cols-8 gap-1.5 h-3 w-full">
+<div class="rounded-full bg-work-active shadow-[0_0_8px_rgba(255,87,34,0.6)]"></div>
+<div class="rounded-full bg-work-active"></div>
+<div class="rounded-full bg-work-active"></div>
+<div class="rounded-full bg-work-active"></div>
+<div class="rounded-full bg-work-active/40"></div>
+<div class="rounded-full bg-work-active/40"></div>
+<div class="rounded-full bg-work-active/40"></div>
+<div class="rounded-full bg-work-active/40"></div>
+</div>
+<div class="flex items-center justify-between mt-3 pt-2">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-work-active"></span>
+<span class="font-body-md text-body-md text-text-primary font-semibold">20s Work</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-rest-active"></span>
+<span class="font-body-md text-body-md text-text-secondary">10s Rest</span>
+</div>
+<span class="font-label-caps-lg text-label-caps-lg text-text-tertiary">8 Rounds</span>
+</div>
+</div>
+<!-- Action Buttons Row -->
+<div class="flex items-center gap-space-sm relative z-10">
+<button class="flex-1 h-14 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center gap-2 font-headline-md text-headline-md font-bold shadow-[0_8px_24px_rgba(255,87,34,0.35)] active:scale-95 transition-all" id="quick-start-trigger">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: &quot;FILL&quot; 1;">play_arrow</span>
+<span class="">Start Workout</span>
+</button>
+<button aria-label="Tune interval parameters" class="w-14 h-14 rounded-full bg-surface-container-highest/80 text-text-primary flex items-center justify-center active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[22px]">tune</span>
+</button>
+</div>
+</section>
+<!-- 3. INTERVAL PROTOCOLS HORIZONTAL FEED -->
+<section class="mb-space-lg">
+<div class="flex items-center justify-between mb-space-sm">
+<div>
+<h3 class="font-headline-md text-headline-md text-text-primary">Protocols</h3>
+<p class="font-body-md text-body-md text-text-secondary">Standardized pacing templates</p>
+</div>
+<button class="font-label-caps-lg text-label-caps-lg text-primary hover:text-text-primary transition-colors">See All</button>
+</div>
+<div class="flex gap-space-md overflow-x-auto pb-2 -mx-margin px-margin no-scrollbar snap-x snap-mandatory">
+<!-- Protocol 1: Classic Tabata -->
+<article class="min-w-[260px] max-w-[260px] snap-start rounded-lg bg-surface-container-high/60 backdrop-blur-md p-space-md flex flex-col justify-between shadow-md relative">
+<div>
+<div class="flex items-center justify-between mb-3">
+<span class="px-2 py-0.5 rounded-full bg-work-active/20 text-work-active font-label-caps-sm text-label-caps-sm">Sprint HIIT</span>
+<span class="font-numeric-metric text-numeric-metric text-text-primary">04:00</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-text-primary mb-1">Tabata Classic</h4>
+<p class="font-body-md text-body-md text-text-secondary line-clamp-2">20s maximum exertion followed by 10s complete recovery.</p>
+</div>
+<div class="mt-4 pt-3 flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="font-label-caps-sm text-label-caps-sm px-2 py-1 rounded bg-surface-container-lowest text-text-secondary">8 Sets</span>
+<span class="font-label-caps-sm text-label-caps-sm px-2 py-1 rounded bg-surface-container-lowest text-text-secondary">20/10</span>
+</div>
+<button aria-label="Start Tabata Classic" class="w-10 h-10 rounded-full bg-work-active text-pure-black flex items-center justify-center active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: &quot;FILL&quot; 1;">play_arrow</span>
+</button>
+</div>
+</article>
+<!-- Protocol 2: EMOM Challenge -->
+<article class="min-w-[260px] max-w-[260px] snap-start rounded-lg bg-surface-container-high/60 backdrop-blur-md p-space-md flex flex-col justify-between shadow-md">
+<div>
+<div class="flex items-center justify-between mb-3">
+<span class="px-2 py-0.5 rounded-full bg-tertiary/20 text-tertiary font-label-caps-sm text-label-caps-sm">Pacing</span>
+<span class="font-numeric-metric text-numeric-metric text-text-primary">10:00</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-text-primary mb-1">EMOM Target</h4>
+<p class="font-body-md text-body-md text-text-secondary line-clamp-2">Every Minute On the Minute. Complete reps, rest remainder.</p>
+</div>
+<div class="mt-4 pt-3 flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="font-label-caps-sm text-label-caps-sm px-2 py-1 rounded bg-surface-container-lowest text-text-secondary">10 Rounds</span>
+<span class="font-label-caps-sm text-label-caps-sm px-2 py-1 rounded bg-surface-container-lowest text-text-secondary">60s Cycle</span>
+</div>
+<button aria-label="Start EMOM" class="w-10 h-10 rounded-full bg-surface-container-highest text-text-primary flex items-center justify-center active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: &quot;FILL&quot; 1;">play_arrow</span>
+</button>
+</div>
+</article>
+<!-- Protocol 3: Boxing Rounds -->
+<article class="min-w-[260px] max-w-[260px] snap-start rounded-lg bg-surface-container-high/60 backdrop-blur-md p-space-md flex flex-col justify-between shadow-md">
+<div>
+<div class="flex items-center justify-between mb-3">
+<span class="px-2 py-0.5 rounded-full bg-rest-active/20 text-rest-active font-label-caps-sm text-label-caps-sm">Combat</span>
+<span class="font-numeric-metric text-numeric-metric text-text-primary">20:00</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-text-primary mb-1">Boxing 3/1</h4>
+<p class="font-body-md text-body-md text-text-secondary line-clamp-2">Championship 3-minute rounds with 60-second corner breaks.</p>
+</div>
+<div class="mt-4 pt-3 flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="font-label-caps-sm text-label-caps-sm px-2 py-1 rounded bg-surface-container-lowest text-text-secondary">5 Rounds</span>
+<span class="font-label-caps-sm text-label-caps-sm px-2 py-1 rounded bg-surface-container-lowest text-text-secondary">3m / 1m</span>
+</div>
+<button aria-label="Start Boxing" class="w-10 h-10 rounded-full bg-surface-container-highest text-text-primary flex items-center justify-center active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: &quot;FILL&quot; 1;">play_arrow</span>
+</button>
+</div>
+</article>
+<!-- Protocol 4: Pyramid Ladder -->
+<article class="min-w-[260px] max-w-[260px] snap-start rounded-lg bg-surface-container-high/60 backdrop-blur-md p-space-md flex flex-col justify-between shadow-md">
+<div>
+<div class="flex items-center justify-between mb-3">
+<span class="px-2 py-0.5 rounded-full bg-primary/20 text-primary font-label-caps-sm text-label-caps-sm">Pyramid</span>
+<span class="font-numeric-metric text-numeric-metric text-text-primary">15:00</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-text-primary mb-1">HIIT Pyramid</h4>
+<p class="font-body-md text-body-md text-text-secondary line-clamp-2">Graduated step intervals: 30s, 45s, 60s, then downward ladder.</p>
+</div>
+<div class="mt-4 pt-3 flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="font-label-caps-sm text-label-caps-sm px-2 py-1 rounded bg-surface-container-lowest text-text-secondary">6 Stages</span>
+<span class="font-label-caps-sm text-label-caps-sm px-2 py-1 rounded bg-surface-container-lowest text-text-secondary">Variable</span>
+</div>
+<button aria-label="Start Pyramid" class="w-10 h-10 rounded-full bg-surface-container-highest text-text-primary flex items-center justify-center active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: &quot;FILL&quot; 1;">play_arrow</span>
+</button>
+</div>
+</article>
+</div>
+</section>
+<!-- 4. CUSTOM INTERVAL BUILDER BANNER -->
+<section class="mb-space-lg">
+<button class="w-full text-left rounded-lg p-space-md bg-surface-container-high/50 hover:bg-surface-container-high/80 backdrop-blur-md transition-all active:scale-[0.99] flex items-center justify-between group">
+<div class="flex items-center gap-space-md">
+<div class="w-12 h-12 rounded-full bg-primary/15 text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined text-[24px]">add</span>
+</div>
+<div>
+<h4 class="font-headline-md text-headline-md text-text-primary">Build Custom Routine</h4>
+<p class="font-body-md text-body-md text-text-secondary">Set customized work, rest, prep &amp; cycles</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-text-secondary text-[22px] group-hover:translate-x-0.5 transition-transform">chevron_right</span>
+</button>
+</section>
+<!-- 5. RECENT ACTIVITY & CONSISTENCY (TIME ONLY - NO HEART METRICS) -->
+<section class="mb-space-lg">
+<div class="flex items-center justify-between mb-space-sm">
+<div>
+<h3 class="font-headline-md text-headline-md text-text-primary">Consistency</h3>
+<p class="font-body-md text-body-md text-text-secondary">Time paced &amp; workout cadence</p>
+</div>
+<span class="font-label-caps-sm text-label-caps-sm px-2.5 py-1 rounded-full bg-surface-container-highest text-primary">WEEK 43</span>
+</div>
+<div class="rounded-lg bg-surface-container-high/60 backdrop-blur-xl p-space-md shadow-md flex flex-col gap-space-md">
+<!-- Summary Counters -->
+<div class="grid grid-cols-3 gap-2">
+<div class="p-space-sm rounded-DEFAULT bg-surface-container-lowest/70 text-center">
+<span class="block font-numeric-metric text-numeric-metric text-text-primary">4</span>
+<span class="block font-label-caps-sm text-label-caps-sm text-text-tertiary uppercase mt-0.5">Active Days</span>
+</div>
+<div class="p-space-sm rounded-DEFAULT bg-surface-container-lowest/70 text-center">
+<span class="block font-numeric-metric text-numeric-metric text-work-active">42m</span>
+<span class="block font-label-caps-sm text-label-caps-sm text-text-tertiary uppercase mt-0.5">Time Trained</span>
+</div>
+<div class="p-space-sm rounded-DEFAULT bg-surface-container-lowest/70 text-center">
+<span class="block font-numeric-metric text-numeric-metric text-rest-active">6</span>
+<span class="block font-label-caps-sm text-label-caps-sm text-text-tertiary uppercase mt-0.5">Routines</span>
+</div>
+</div>
+<!-- Weekly Strip (M T W T F S S) -->
+<div>
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-caps-sm text-label-caps-sm text-text-tertiary uppercase tracking-wider">Weekly Streak</span>
+<span class="font-label-caps-sm text-label-caps-sm text-text-secondary">Current: 4 Days Streak</span>
+</div>
+<div class="grid grid-cols-7 gap-1.5 text-center">
+<!-- Mon - Completed -->
+<div class="flex flex-col items-center gap-1.5">
+<span class="font-label-caps-sm text-label-caps-sm text-text-tertiary">M</span>
+<div class="w-8 h-8 rounded-full bg-work-active text-pure-black flex items-center justify-center font-label-caps-sm text-label-caps-sm font-bold shadow-[0_0_6px_rgba(255,87,34,0.4)]">
+<span class="material-symbols-outlined text-[16px]">check</span>
+</div>
+</div>
+<!-- Tue - Completed -->
+<div class="flex flex-col items-center gap-1.5">
+<span class="font-label-caps-sm text-label-caps-sm text-text-tertiary">T</span>
+<div class="w-8 h-8 rounded-full bg-work-active text-pure-black flex items-center justify-center font-label-caps-sm text-label-caps-sm font-bold shadow-[0_0_6px_rgba(255,87,34,0.4)]">
+<span class="material-symbols-outlined text-[16px]">check</span>
+</div>
+</div>
+<!-- Wed - Rest Day -->
+<div class="flex flex-col items-center gap-1.5">
+<span class="font-label-caps-sm text-label-caps-sm text-text-tertiary">W</span>
+<div class="w-8 h-8 rounded-full bg-surface-container-lowest flex items-center justify-center text-text-tertiary font-label-caps-sm text-label-caps-sm">
+                —
+              </div>
+</div>
+<!-- Thu - Completed (Today) -->
+<div class="flex flex-col items-center gap-1.5">
+<span class="font-label-caps-sm text-label-caps-sm text-primary font-bold">T</span>
+<div class="w-8 h-8 rounded-full bg-work-active text-pure-black flex items-center justify-center font-label-caps-sm text-label-caps-sm font-bold ring-2 ring-primary">
+<span class="material-symbols-outlined text-[16px]">check</span>
+</div>
+</div>
+<!-- Fri - Planned -->
+<div class="flex flex-col items-center gap-1.5">
+<span class="font-label-caps-sm text-label-caps-sm text-text-tertiary">F</span>
+<div class="w-8 h-8 rounded-full bg-surface-container-lowest flex items-center justify-center text-text-secondary font-label-caps-sm text-label-caps-sm">
+                25
+              </div>
+</div>
+<!-- Sat - Planned -->
+<div class="flex flex-col items-center gap-1.5">
+<span class="font-label-caps-sm text-label-caps-sm text-text-tertiary">S</span>
+<div class="w-8 h-8 rounded-full bg-surface-container-lowest flex items-center justify-center text-text-secondary font-label-caps-sm text-label-caps-sm">
+                26
+              </div>
+</div>
+<!-- Sun - Planned -->
+<div class="flex flex-col items-center gap-1.5">
+<span class="font-label-caps-sm text-label-caps-sm text-text-tertiary">S</span>
+<div class="w-8 h-8 rounded-full bg-surface-container-lowest flex items-center justify-center text-text-secondary font-label-caps-sm text-label-caps-sm">
+                27
+              </div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 6. TACTILE AUDIO & HAPTIC STATUS DOCK -->
+<section class="mb-space-md">
+<div class="rounded-lg bg-surface-container-high/40 p-space-sm flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-work-active">graphic_eq</span>
+<span class="font-body-md text-body-md text-text-secondary">Voice Coach: <strong class="text-text-primary">Countdown Chimes</strong></span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px] text-rest-active">vibration</span>
+<span class="font-label-caps-sm text-label-caps-sm text-text-secondary">Haptics On</span>
+</div>
+</div>
+</section>
+</div>
+<!-- 7. FLOATING TRANSLUCENT GLASS BOTTOM NAVIGATION BAR -->
+<nav aria-label="App Navigation" class="fixed bottom-3 inset-x-margin max-w-md mx-auto z-40 rounded-full bg-surface-container-high/85 backdrop-blur-2xl px-6 py-2.5 shadow-2xl flex items-center justify-around">
+<!-- Tab 1: Home (Active) -->
+<button class="flex flex-col items-center gap-0.5 text-primary active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: &quot;FILL&quot; 1;">timer</span>
+<span class="font-label-caps-sm text-label-caps-sm font-bold">Home</span>
+</button>
+<!-- Tab 2: Routines -->
+<button class="flex flex-col items-center gap-0.5 text-text-secondary hover:text-text-primary active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[24px]">fitness_center</span>
+<span class="font-label-caps-sm text-label-caps-sm">Routines</span>
+</button>
+<!-- Tab 3: History -->
+<button class="flex flex-col items-center gap-0.5 text-text-secondary hover:text-text-primary active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[24px]">calendar_month</span>
+<span class="font-label-caps-sm text-label-caps-sm">History</span>
+</button>
+<!-- Tab 4: Settings -->
+<button class="flex flex-col items-center gap-0.5 text-text-secondary hover:text-text-primary active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[24px]">settings</span>
+<span class="font-label-caps-sm text-label-caps-sm">Settings</span>
+</button>
+</nav>
+</div>
+<script>
+  // Micro-interaction for quick start button feedback
+  document.getElementById('quick-start-trigger')?.addEventListener('click', function() {
+    this.classList.add('scale-95');
+    setTimeout(() => {
+      this.classList.remove('scale-95');
+    }, 120);
+  });
+
+  // Bookmark toggle
+  const favBtn = document.getElementById('hero-favorite-btn');
+  favBtn?.addEventListener('click', function() {
+    const icon = this.querySelector('.material-symbols-outlined');
+    if (icon) {
+      const isFilled = icon.style.fontVariationSettings?.includes("'FILL' 1");
+      icon.style.fontVariationSettings = isFilled ? "'FILL' 0" : "'FILL' 1";
+      this.classList.toggle('text-primary');
+    }
+  });
+</script></main>
+
+</body></html>

@@ -1,0 +1,467 @@
+<!DOCTYPE html><html class="dark" lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{width:100vw;margin:0;padding:0;background-color:#121315;}body{overscroll-behavior:none;-webkit-font-smoothing:antialiased;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"on-secondary-container":"#00616d","tertiary-fixed":"#ffdeac","text-tertiary":"rgba(255, 255, 255, 0.4)","on-background":"#e3e2e3","surface-container-lowest":"#0d0e0f","on-surface":"#e3e2e3","tertiary-fixed-dim":"#ffba38","text-secondary":"rgba(255, 255, 255, 0.65)","prep-state":"#FFB300","surface-bright":"#38393a","text-primary":"#FFFFFF","pure-black":"#000000","inverse-on-surface":"#303032","surface-glass-elevated":"rgba(255, 255, 255, 0.14)","secondary":"#bdf4ff","tertiary":"#ffba38","rest-active":"#00E5FF","on-secondary-fixed":"#001f24","on-primary-fixed-variant":"#862200","on-primary-fixed":"#3b0900","surface-variant":"#343536","on-tertiary-container":"#3a2600","surface-glass":"rgba(255, 255, 255, 0.08)","outline":"#ab8980","rest-deep":"#1A237E","error-container":"#93000a","inverse-surface":"#e3e2e3","outline-variant":"#5b4039","primary-fixed":"#ffdbd1","inverse-primary":"#b02f00","work-active":"#FF5722","secondary-container":"#00e3fd","tertiary-container":"#c08600","surface-container-low":"#1b1c1d","surface-container-high":"#292a2b","on-tertiary-fixed-variant":"#604100","primary":"#ffb5a0","surface":"#121315","error":"#ffb4ab","secondary-fixed-dim":"#00daf3","surface-container-highest":"#343536","primary-fixed-dim":"#ffb5a0","surface-dim":"#121315","on-primary":"#5f1500","on-secondary":"#00363d","primary-container":"#ff5722","secondary-fixed":"#9cf0ff","edge-highlight":"rgba(255, 255, 255, 0.35)","on-tertiary-fixed":"#281900","work-neon":"#39FF14","on-surface-variant":"#e4beb4","surface-container":"#1f2021","on-primary-container":"#541200","on-secondary-fixed-variant":"#004f58","background":"#121315","surface-tint":"#ffb5a0","on-error":"#690005","on-error-container":"#ffdad6","on-tertiary":"#432c00"},"borderRadius":{"DEFAULT":"1rem","lg":"2rem","xl":"3rem","full":"9999px"},"spacing":{"margin":"1.25rem","gutter-tablet":"1.5rem","space-xl":"2.5rem","gutter":"1rem","space-xs":"0.25rem","margin-desktop":"3rem","space-lg":"1.5rem","gutter-desktop":"2rem","space-md":"1rem","margin-tablet":"2rem","space-sm":"0.5rem"},"fontFamily":{"timer-display-hero":["Space Grotesk"],"headline-md":["Inter"],"display-lg-mobile":["Space Grotesk"],"numeric-metric":["Space Grotesk"],"body-md":["Inter"],"display-lg":["Space Grotesk"],"label-caps-sm":["Inter"],"body-lg":["Inter"],"headline-lg":["Inter"],"timer-display-hero-mobile":["Space Grotesk"],"label-caps-lg":["Inter"]},"fontSize":{"timer-display-hero":["96px",{"lineHeight":"96px","letterSpacing":"-0.04em","fontWeight":"700"}],"headline-md":["22px",{"lineHeight":"28px","letterSpacing":"-0.01em","fontWeight":"600"}],"display-lg-mobile":["36px",{"lineHeight":"40px","letterSpacing":"-0.02em","fontWeight":"600"}],"numeric-metric":["20px",{"lineHeight":"24px","letterSpacing":"-0.01em","fontWeight":"600"}],"body-md":["15px",{"lineHeight":"20px","letterSpacing":"0.005em","fontWeight":"400"}],"display-lg":["48px",{"lineHeight":"52px","letterSpacing":"-0.02em","fontWeight":"600"}],"label-caps-sm":["11px",{"lineHeight":"14px","letterSpacing":"0.08em","fontWeight":"700"}],"body-lg":["17px",{"lineHeight":"24px","letterSpacing":"0em","fontWeight":"400"}],"headline-lg":["28px",{"lineHeight":"34px","letterSpacing":"-0.015em","fontWeight":"600"}],"timer-display-hero-mobile":["64px",{"lineHeight":"68px","letterSpacing":"-0.03em","fontWeight":"700"}],"label-caps-lg":["13px",{"lineHeight":"16px","letterSpacing":"0.06em","fontWeight":"600"}]}}}}</script></head><body class="bg-surface text-on-surface flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-gutter flex items-center justify-between"><div class="flex items-center gap-space-sm"><button aria-label="Go back" class="w-11 h-11 flex items-center justify-center rounded-full bg-surface-container-high/60 text-on-surface hover:bg-surface-container-highest transition-colors" onclick="history.back()"><span class="material-symbols-outlined text-[20px]">arrow_back_ios_new</span></button><h1 class="font-headline-md text-headline-md text-text-primary leading-tight truncate max-w-[150px]">Active Workout</h1></div><div class="flex items-center gap-space-sm"><button aria-label="Mute audio cues" class="w-11 h-11 flex items-center justify-center rounded-full bg-surface-container-high/80 text-text-secondary hover:text-text-primary transition-colors"><span class="material-symbols-outlined text-[20px]">volume_up</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex flex-col relative w-full pt-16 pb-safe bg-surface"><div class="flex flex-col w-full text-on-surface pb-32">
+<!-- Routine Header Identity & Ambient Backlight -->
+<div class="relative px-margin pt-space-md pb-space-sm">
+<!-- Ambient energetic light pulse -->
+<div class="absolute -top-10 left-1/2 -translate-x-1/2 w-64 h-32 bg-primary-container/15 rounded-full blur-3xl pointer-events-none"></div>
+<!-- Title & Preset Chips -->
+<div class="relative flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm group cursor-pointer">
+<input class="bg-transparent font-headline-lg text-headline-lg text-text-primary tracking-tight focus:outline-none border-b border-transparent focus:border-primary-container transition-colors max-w-[260px] truncate" id="routine-title-input" type="text" value="Tabata HIIT Extreme">
+<span class="material-symbols-outlined text-text-secondary text-[20px] group-hover:text-primary transition-colors">edit</span>
+</div>
+<span class="px-space-sm py-0.5 rounded-full bg-surface-container-high text-prep-state font-label-caps-sm text-label-caps-sm flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-prep-state animate-ping"></span>
+          DRAFT
+        </span>
+</div>
+<!-- Preset Pills Scroll / Strip -->
+<div class="flex items-center gap-space-xs overflow-x-auto py-1 no-scrollbar">
+<button class="preset-pill px- space-md py-1.5 rounded-full bg-primary text-on-primary font-label-caps-sm text-label-caps-sm tracking-wider transition-all" data-preset="tabata">
+          TABATA
+        </button>
+<button class="preset-pill px-space-md py-1.5 rounded-full bg-surface-container-high/80 text-text-secondary hover:text-text-primary font-label-caps-sm text-label-caps-sm tracking-wider transition-all" data-preset="emom">
+          EMOM
+        </button>
+<button class="preset-pill px-space-md py-1.5 rounded-full bg-surface-container-high/80 text-text-secondary hover:text-text-primary font-label-caps-sm text-label-caps-sm tracking-wider transition-all" data-preset="hiit">
+          HIIT PYRAMID
+        </button>
+<button class="preset-pill px-space-md py-1.5 rounded-full bg-surface-container-high/80 text-text-secondary hover:text-text-primary font-label-caps-sm text-label-caps-sm tracking-wider transition-all" data-preset="custom">
+          CUSTOM
+        </button>
+</div>
+<!-- Realtime Workout Dynamic Metric Badge -->
+<div class="mt-space-xs flex items-center justify-between p-space-sm px-space-md rounded-lg bg-surface-container-low/90 backdrop-blur-xl shadow-inner">
+<div class="flex items-center gap-space-xs text-text-secondary">
+<span class="material-symbols-outlined text-primary-container text-[20px]">timelapse</span>
+<span class="font-label-caps-sm text-label-caps-sm uppercase tracking-wider">Computed Run</span>
+</div>
+<div class="flex items-center gap-space-sm font-numeric-metric text-numeric-metric">
+<span class="text-text-primary font-bold tracking-tight" id="computed-total-time">04:30</span>
+<span class="text-text-tertiary text-[14px]">•</span>
+<span class="text-primary font-bold" id="computed-round-badge">8 Rounds</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Interval Configuration Section -->
+<div class="px-margin flex flex-col gap-space-sm mt-space-sm">
+<div class="flex items-center justify-between px-space-xs">
+<span class="font-label-caps-lg text-label-caps-lg text-text-tertiary tracking-widest uppercase">Sequence Plan</span>
+<span class="font-label-caps-sm text-label-caps-sm text-text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">tune</span> 5s step lock
+      </span>
+</div>
+<!-- 1. Warmup Interval Card (Collapsible/Toggleable) -->
+<div class="relative overflow-hidden rounded-lg bg-surface-container-low/80 backdrop-blur-2xl shadow-lg p-space-md transition-all duration-300" id="warmup-card">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-prep-state/20 text-prep-state flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">local_fire_department</span>
+</div>
+<div>
+<h2 class="font-headline-md text-headline-md text-text-primary leading-tight">Warmup</h2>
+<p class="font-label-caps-sm text-label-caps-sm text-text-secondary">Low intensity ramp</p>
+</div>
+</div>
+<!-- Switch -->
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" id="warmup-toggle" type="checkbox">
+<div class="w-12 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-surface-dim after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-text-primary after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-prep-state"></div>
+</label>
+</div>
+<div class="mt-space-md flex items-center justify-between pt-space-xs" id="warmup-control-block">
+<button class="stepper-btn w-12 h-12 rounded-full bg-surface-container-high/80 text-text-primary flex items-center justify-center active:scale-90 transition-transform select-none" onclick="adjustTime('warmup', -5)">
+<span class="material-symbols-outlined">remove</span>
+</button>
+<div class="flex flex-col items-center">
+<span class="font-timer-display-hero-mobile text-timer-display-hero-mobile text-prep-state tabular-nums leading-none tracking-tight" id="warmup-display">00:30</span>
+<span class="font-label-caps-sm text-label-caps-sm text-text-tertiary uppercase mt-1">Duration (MM:SS)</span>
+</div>
+<button class="stepper-btn w-12 h-12 rounded-full bg-surface-container-high/80 text-text-primary flex items-center justify-center active:scale-90 transition-transform select-none" onclick="adjustTime('warmup', 5)">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+<!-- 2. Work Interval Card (Kinetic Work Orange Glow) -->
+<div class="relative overflow-hidden rounded-lg bg-surface-container-low/80 backdrop-blur-2xl shadow-[0_8px_32px_rgba(255,87,34,0.18)] p-space-md">
+<div class="absolute -right-8 -top-8 w-28 h-28 bg-work-active/10 rounded-full blur-2xl pointer-events-none"></div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-work-active text-pure-black flex items-center justify-center shadow-[0_0_12px_rgba(255,87,34,0.6)]">
+<span class="material-symbols-outlined text-[18px]">bolt</span>
+</div>
+<div>
+<div class="flex items-center gap-space-xs">
+<h2 class="font-headline-md text-headline-md text-text-primary leading-tight">Work Interval</h2>
+<span class="px-1.5 py-0.5 rounded-full bg-work-active/20 text-work-active font-label-caps-sm text-label-caps-sm uppercase">Peak</span>
+</div>
+<p class="font-label-caps-sm text-label-caps-sm text-text-secondary">Maximum explosive effort</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-work-active text-[20px]">directions_run</span>
+</div>
+<div class="mt-space-md flex items-center justify-between">
+<button class="w-12 h-12 rounded-full bg-surface-container-high text-work-active flex items-center justify-center active:scale-90 transition-transform select-none shadow-sm" onclick="adjustTime('work', -5)">
+<span class="material-symbols-outlined">remove</span>
+</button>
+<div class="flex flex-col items-center">
+<span class="font-timer-display-hero-mobile text-timer-display-hero-mobile text-work-active tabular-nums leading-none tracking-tight drop-shadow-[0_2px_16px_rgba(255,87,34,0.45)]" id="work-display">00:20</span>
+<span class="font-label-caps-sm text-label-caps-sm text-text-tertiary uppercase mt-1">High Intensity Rate</span>
+</div>
+<button class="w-12 h-12 rounded-full bg-surface-container-high text-work-active flex items-center justify-center active:scale-90 transition-transform select-none shadow-sm" onclick="adjustTime('work', 5)">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+<!-- Fine-tune Slider Bar Visual -->
+<div class="mt-space-md w-full px-1">
+<input class="w-full h-1.5 bg-surface-container-highest rounded-full appearance-none cursor-pointer accent-work-active" id="work-range" max="120" min="5" oninput="syncFromSlider('work', this.value)" step="5" type="range" value="20">
+</div>
+</div>
+<!-- 3. Rest Interval Card (Restorative Cyan Ambient) -->
+<div class="relative overflow-hidden rounded-lg bg-surface-container-low/80 backdrop-blur-2xl shadow-[0_8px_32px_rgba(0,229,255,0.12)] p-space-md">
+<div class="absolute -left-8 -top-8 w-28 h-28 bg-rest-active/10 rounded-full blur-2xl pointer-events-none"></div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-rest-active text-pure-black flex items-center justify-center shadow-[0_0_12px_rgba(0,229,255,0.6)]">
+<span class="material-symbols-outlined text-[18px]">air</span>
+</div>
+<div>
+<div class="flex items-center gap-space-xs">
+<h2 class="font-headline-md text-headline-md text-text-primary leading-tight">Rest Interval</h2>
+<span class="px-1.5 py-0.5 rounded-full bg-rest-active/20 text-rest-active font-label-caps-sm text-label-caps-sm uppercase">Recovery</span>
+</div>
+<p class="font-label-caps-sm text-label-caps-sm text-text-secondary">Controlled tactical reset</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-rest-active text-[20px]">self_improvement</span>
+</div>
+<div class="mt-space-md flex items-center justify-between">
+<button class="w-12 h-12 rounded-full bg-surface-container-high text-rest-active flex items-center justify-center active:scale-90 transition-transform select-none shadow-sm" onclick="adjustTime('rest', -5)">
+<span class="material-symbols-outlined">remove</span>
+</button>
+<div class="flex flex-col items-center">
+<span class="font-timer-display-hero-mobile text-timer-display-hero-mobile text-rest-active tabular-nums leading-none tracking-tight drop-shadow-[0_2px_16px_rgba(0,229,255,0.35)]" id="rest-display">00:10</span>
+<span class="font-label-caps-sm text-label-caps-sm text-text-tertiary uppercase mt-1">Zone 1 Restoration</span>
+</div>
+<button class="w-12 h-12 rounded-full bg-surface-container-high text-rest-active flex items-center justify-center active:scale-90 transition-transform select-none shadow-sm" onclick="adjustTime('rest', 5)">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+<!-- Fine-tune Slider Bar Visual -->
+<div class="mt-space-md w-full px-1">
+<input class="w-full h-1.5 bg-surface-container-highest rounded-full appearance-none cursor-pointer accent-rest-active" id="rest-range" max="120" min="5" oninput="syncFromSlider('rest', this.value)" step="5" type="range" value="10">
+</div>
+</div>
+<!-- 4. Cycle / Rounds Multiplier Card -->
+<div class="relative overflow-hidden rounded-lg bg-surface-container-low/80 backdrop-blur-2xl shadow-lg p-space-md flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-tertiary/20 text-tertiary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">replay</span>
+</div>
+<div>
+<h2 class="font-headline-md text-headline-md text-text-primary leading-tight">Total Rounds</h2>
+<p class="font-label-caps-sm text-label-caps-sm text-text-secondary">Repeated interval cycles</p>
+</div>
+</div>
+<div class="flex items-center gap-space-sm">
+<button class="w-10 h-10 rounded-full bg-surface-container-high text-text-primary flex items-center justify-center active:scale-90 transition-transform select-none" onclick="adjustRounds(-1)">
+<span class="material-symbols-outlined text-[18px]">remove</span>
+</button>
+<span class="font-display-lg-mobile text-display-lg-mobile text-text-primary font-bold min-w-[48px] text-center" id="rounds-display">8</span>
+<button class="w-10 h-10 rounded-full bg-surface-container-high text-text-primary flex items-center justify-center active:scale-90 transition-transform select-none" onclick="adjustRounds(1)">
+<span class="material-symbols-outlined text-[18px]">add</span>
+</button>
+</div>
+</div>
+<!-- 5. Cooldown Interval Card (Optional Toggle) -->
+<div class="relative overflow-hidden rounded-lg bg-surface-container-low/80 backdrop-blur-2xl shadow-lg p-space-md transition-all duration-300" id="cooldown-card">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-secondary-container/20 text-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">ac_unit</span>
+</div>
+<div>
+<h2 class="font-headline-md text-headline-md text-text-primary leading-tight">Cooldown</h2>
+<p class="font-label-caps-sm text-label-caps-sm text-text-secondary">Active recovery cooldown</p>
+</div>
+</div>
+<!-- Switch -->
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" id="cooldown-toggle" type="checkbox">
+<div class="w-12 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-surface-dim after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-text-primary after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-secondary-container"></div>
+</label>
+</div>
+<div class="mt-space-md items-center justify-between pt-space-xs hidden" id="cooldown-control-block">
+<button class="w-12 h-12 rounded-full bg-surface-container-high text-text-primary flex items-center justify-center active:scale-90 transition-transform select-none" onclick="adjustTime('cooldown', -5)">
+<span class="material-symbols-outlined">remove</span>
+</button>
+<div class="flex flex-col items-center">
+<span class="font-timer-display-hero-mobile text-timer-display-hero-mobile text-secondary-container tabular-nums leading-none tracking-tight" id="cooldown-display">01:00</span>
+<span class="font-label-caps-sm text-label-caps-sm text-text-tertiary uppercase mt-1">Duration (MM:SS)</span>
+</div>
+<button class="w-12 h-12 rounded-full bg-surface-container-high text-text-primary flex items-center justify-center active:scale-90 transition-transform select-none" onclick="adjustTime('cooldown', 5)">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Audio, Cues & Sensory Feedback Settings Section -->
+<div class="px-margin mt-space-lg flex flex-col gap-space-sm">
+<div class="flex items-center justify-between px-space-xs">
+<span class="font-label-caps-lg text-label-caps-lg text-text-tertiary tracking-widest uppercase">Tactical Sensory Cues</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-highest text-text-secondary font-label-caps-sm text-label-caps-sm">Apple Core Haptics</span>
+</div>
+<div class="rounded-lg bg-surface-container-low/90 backdrop-blur-2xl p-space-md flex flex-col gap-space-md">
+<!-- Voice / Chime Selector Segment -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-body-md text-body-md text-text-primary">Auditory Signals</span>
+<span class="font-label-caps-sm text-label-caps-sm text-primary">AirPods Synced</span>
+</div>
+<div class="grid grid-cols-3 gap-space-xs p-1 rounded-full bg-surface-container-highest/60 mt-1">
+<button class="cue-pill active-cue py-2 rounded-full font-label-caps-sm text-label-caps-sm bg-surface-container text-text-primary shadow font-semibold transition-colors" onclick="selectCue(this, 'chime')">
+            Voice Coach
+          </button>
+<button class="cue-pill py-2 rounded-full font-label-caps-sm text-label-caps-sm text-text-secondary hover:text-text-primary transition-colors" onclick="selectCue(this, 'whistle')">
+            Beeps &amp; Whistle
+          </button>
+<button class="cue-pill py-2 rounded-full font-label-caps-sm text-label-caps-sm text-text-secondary hover:text-text-primary transition-colors" onclick="selectCue(this, 'minimal')">
+            Silent Pulse
+          </button>
+</div>
+</div>
+<!-- Haptic Profile Segment -->
+<div class="flex flex-col gap-space-xs pt-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-body-md text-body-md text-text-primary">Haptic Pattern</span>
+<span class="font-label-caps-sm text-label-caps-sm text-rest-active">Heavy Strike</span>
+</div>
+<div class="grid grid-cols-3 gap-space-xs p-1 rounded-full bg-surface-container-highest/60 mt-1">
+<button class="haptic-pill py-2 rounded-full font-label-caps-sm text-label-caps-sm text-text-secondary hover:text-text-primary transition-colors" onclick="selectHaptic(this)">
+            Sharp Click
+          </button>
+<button class="haptic-pill active-haptic py-2 rounded-full font-label-caps-sm text-label-caps-sm bg-surface-container text-text-primary shadow font-semibold transition-colors" onclick="selectHaptic(this)">Pulse Rhythm</button>
+<button class="haptic-pill py-2 rounded-full font-label-caps-sm text-label-caps-sm text-text-secondary hover:text-text-primary transition-colors" onclick="selectHaptic(this)">
+            Double Thud
+          </button>
+</div>
+</div>
+<!-- Visual Flashes & Stand Lock Toggle -->
+<div class="flex items-center justify-between pt-space-xs">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-text-secondary text-[20px]">screen_rotation</span>
+<div>
+<span class="font-body-md text-body-md text-text-primary block">OLED Chroma Flash</span>
+<span class="font-label-caps-sm text-label-caps-sm text-text-tertiary">Peripheral edge flash at countdown 3-2-1</span>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox">
+<div class="w-12 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-surface-dim after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-text-primary after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+</div>
+</div>
+<!-- Motivational Minimal Quote Card -->
+<div class="px-margin mt-space-md">
+<div class="p-space-md rounded-lg bg-surface-container-lowest/60 flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-prep-state text-[22px]">offline_bolt</span>
+<p class="font-body-md text-body-md text-text-secondary italic">
+        "Tabata protocol: 20s maximal VO₂ demand followed by 10s cellular oxygen recharge."
+      </p>
+</div>
+</div>
+<!-- Floating Sticky Action Dock -->
+<div class="fixed bottom-0 left-0 right-0 z-40 p-margin bg-gradient-to-t from-surface via-surface/90 to-transparent pointer-events-none">
+<div class="max-w-md mx-auto flex items-center gap-space-sm pointer-events-auto">
+<!-- Save Preset Routine -->
+<button class="flex-1 h-14 rounded-full bg-surface-container-high/90 hover:bg-surface-container-highest backdrop-blur-xl text-text-primary font-headline-md text-[16px] flex items-center justify-center gap-space-xs active:scale-95 transition-all shadow-md" id="btn-save-routine" onclick="triggerSaveAnimation()">
+<span class="material-symbols-outlined text-[20px]">bookmark</span>
+<span class="">Save</span>
+</button>
+<!-- Launch Workout Hero CTA -->
+<button class="flex-[2] h-14 rounded-full bg-gradient-to-r from-work-active to-primary-container text-on-primary-container font-headline-md text-[16px] font-bold flex items-center justify-center gap-space-xs shadow-[0_8px_24px_rgba(255,87,34,0.4)] active:scale-95 transition-transform" id="btn-start-workout" onclick="launchWorkoutRoutine()">
+<span class="material-symbols-outlined text-[22px]">play_arrow</span>
+<span class="">Start Routine</span>
+</button>
+</div>
+</div>
+</div>
+<script>
+  // State store for routine configuration
+  const routineState = {
+    warmup: 30,
+    warmupEnabled: true,
+    work: 20,
+    rest: 10,
+    rounds: 8,
+    cooldown: 60,
+    cooldownEnabled: false
+  };
+
+  function formatTime(seconds) {
+    const m = Math.floor(seconds / 60);
+    const s = seconds % 60;
+    return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+  }
+
+  function updateTotals() {
+    let totalSec = 0;
+    if (routineState.warmupEnabled) {
+      totalSec += routineState.warmup;
+    }
+    totalSec += (routineState.work + routineState.rest) * routineState.rounds;
+    if (routineState.cooldownEnabled) {
+      totalSec += routineState.cooldown;
+    }
+
+    const formatted = formatTime(totalSec);
+    const totalEl = document.getElementById('computed-total-time');
+    const badgeEl = document.getElementById('computed-round-badge');
+    if (totalEl) totalEl.textContent = formatted;
+    if (badgeEl) badgeEl.textContent = `${routineState.rounds} Rounds`;
+  }
+
+  function adjustTime(type, delta) {
+    if (type === 'warmup') {
+      routineState.warmup = Math.max(0, routineState.warmup + delta);
+      document.getElementById('warmup-display').textContent = formatTime(routineState.warmup);
+    } else if (type === 'work') {
+      routineState.work = Math.max(5, routineState.work + delta);
+      document.getElementById('work-display').textContent = formatTime(routineState.work);
+      document.getElementById('work-range').value = routineState.work;
+    } else if (type === 'rest') {
+      routineState.rest = Math.max(0, routineState.rest + delta);
+      document.getElementById('rest-display').textContent = formatTime(routineState.rest);
+      document.getElementById('rest-range').value = routineState.rest;
+    } else if (type === 'cooldown') {
+      routineState.cooldown = Math.max(0, routineState.cooldown + delta);
+      document.getElementById('cooldown-display').textContent = formatTime(routineState.cooldown);
+    }
+    updateTotals();
+  }
+
+  function syncFromSlider(type, val) {
+    const num = parseInt(val, 10);
+    if (type === 'work') {
+      routineState.work = num;
+      document.getElementById('work-display').textContent = formatTime(num);
+    } else if (type === 'rest') {
+      routineState.rest = num;
+      document.getElementById('rest-display').textContent = formatTime(num);
+    }
+    updateTotals();
+  }
+
+  function adjustRounds(delta) {
+    routineState.rounds = Math.max(1, Math.min(99, routineState.rounds + delta));
+    document.getElementById('rounds-display').textContent = routineState.rounds;
+    updateTotals();
+  }
+
+  // Preset Selector Logic
+  const presets = {
+    tabata: { title: "Tabata HIIT Extreme", work: 20, rest: 10, rounds: 8, warmup: 30, warmupEnabled: true, cooldown: 60, cooldownEnabled: false },
+    emom: { title: "EMOM Power Hour", work: 50, rest: 10, rounds: 10, warmup: 60, warmupEnabled: true, cooldown: 60, cooldownEnabled: true },
+    hiit: { title: "Savage HIIT Sprint", work: 45, rest: 15, rounds: 6, warmup: 45, warmupEnabled: true, cooldown: 90, cooldownEnabled: true },
+    custom: { title: "Custom Free Interval", work: 30, rest: 30, rounds: 5, warmup: 0, warmupEnabled: false, cooldown: 0, cooldownEnabled: false }
+  };
+
+  document.querySelectorAll('.preset-pill').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.preset-pill').forEach(b => {
+        b.className = "preset-pill px-space-md py-1.5 rounded-full bg-surface-container-high/80 text-text-secondary hover:text-text-primary font-label-caps-sm text-label-caps-sm tracking-wider transition-all";
+      });
+      btn.className = "preset-pill px-space-md py-1.5 rounded-full bg-primary text-on-primary font-label-caps-sm text-label-caps-sm tracking-wider transition-all";
+
+      const pKey = btn.getAttribute('data-preset');
+      const p = presets[pKey];
+      if (p) {
+        document.getElementById('routine-title-input').value = p.title;
+        routineState.work = p.work;
+        routineState.rest = p.rest;
+        routineState.rounds = p.rounds;
+        routineState.warmup = p.warmup;
+        routineState.warmupEnabled = p.warmupEnabled;
+        routineState.cooldown = p.cooldown;
+        routineState.cooldownEnabled = p.cooldownEnabled;
+
+        document.getElementById('work-display').textContent = formatTime(p.work);
+        document.getElementById('work-range').value = p.work;
+        document.getElementById('rest-display').textContent = formatTime(p.rest);
+        document.getElementById('rest-range').value = p.rest;
+        document.getElementById('rounds-display').textContent = p.rounds;
+        document.getElementById('warmup-display').textContent = formatTime(p.warmup);
+        document.getElementById('cooldown-display').textContent = formatTime(p.cooldown);
+
+        document.getElementById('warmup-toggle').checked = p.warmupEnabled;
+        document.getElementById('cooldown-toggle').checked = p.cooldownEnabled;
+
+        document.getElementById('warmup-control-block').style.display = p.warmupEnabled ? 'flex' : 'none';
+        document.getElementById('cooldown-control-block').style.display = p.cooldownEnabled ? 'flex' : 'none';
+
+        updateTotals();
+      }
+    });
+  });
+
+  // Warmup toggle binding
+  document.getElementById('warmup-toggle').addEventListener('change', (e) => {
+    routineState.warmupEnabled = e.target.checked;
+    const block = document.getElementById('warmup-control-block');
+    block.style.display = e.target.checked ? 'flex' : 'none';
+    updateTotals();
+  });
+
+  // Cooldown toggle binding
+  document.getElementById('cooldown-toggle').addEventListener('change', (e) => {
+    routineState.cooldownEnabled = e.target.checked;
+    const block = document.getElementById('cooldown-control-block');
+    block.style.display = e.target.checked ? 'flex' : 'none';
+    updateTotals();
+  });
+
+  // Audio Cue pill selector
+  function selectCue(button, type) {
+    document.querySelectorAll('.cue-pill').forEach(b => {
+      b.className = "cue-pill py-2 rounded-full font-label-caps-sm text-label-caps-sm text-text-secondary hover:text-text-primary transition-colors";
+    });
+    button.className = "cue-pill active-cue py-2 rounded-full font-label-caps-sm text-label-caps-sm bg-surface-container text-text-primary shadow font-semibold transition-colors";
+  }
+
+  // Haptic pill selector
+  function selectHaptic(button) {
+    document.querySelectorAll('.haptic-pill').forEach(b => {
+      b.className = "haptic-pill py-2 rounded-full font-label-caps-sm text-label-caps-sm text-text-secondary hover:text-text-primary transition-colors";
+    });
+    button.className = "haptic-pill active-haptic py-2 rounded-full font-label-caps-sm text-label-caps-sm bg-surface-container text-text-primary shadow font-semibold transition-colors";
+  }
+
+  // Save Routine Micro-Feedback
+  function triggerSaveAnimation() {
+    const btn = document.getElementById('btn-save-routine');
+    const origHTML = btn.innerHTML;
+    btn.innerHTML = `<span class="material-symbols-outlined text-[20px] text-work-neon">check_circle</span> <span class="text-work-neon">Saved!</span>`;
+    setTimeout(() => {
+      btn.innerHTML = origHTML;
+    }, 1800);
+  }
+
+  // Start workout feedback
+  function launchWorkoutRoutine() {
+    const btn = document.getElementById('btn-start-workout');
+    btn.classList.add('scale-95', 'opacity-90');
+    setTimeout(() => {
+      btn.classList.remove('scale-95', 'opacity-90');
+    }, 200);
+  }
+
+  // Init
+  updateTotals();
+</script></main>
+
+
+
+</body></html>
