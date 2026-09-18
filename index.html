@@ -94,26 +94,14 @@
     </header>
 
     <div class="px-4 space-y-6 mt-2">
-      <!-- Status bar -->
-      <div class="flex items-center justify-between">
-        <div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container-high/50 border border-white/5">
-          <div class="w-2 h-2 rounded-full bg-work-active animate-pulse"></div>
-          <span class="text-[11px] font-bold uppercase tracking-wider text-text-secondary">Ready to train</span>
-        </div>
-        <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container-high/50 border border-white/5">
-          <span class="material-symbols-outlined text-[14px] text-text-secondary">headphones</span>
-          <span class="text-[11px] font-medium text-text-secondary">AirPods Connected</span>
-        </div>
-      </div>
-
       <!-- Date & Badge -->
       <div class="flex items-end justify-between">
         <div>
-          <h2 class="text-text-secondary text-sm font-medium mb-1">Today, October 24</h2>
-          <div class="font-display text-3xl font-bold">Session 24</div>
+          <h2 id="homeDate" class="text-text-secondary text-sm font-medium mb-1">Today</h2>
+          <div id="homeSession" class="font-display text-3xl font-bold">Session 1</div>
         </div>
         <div class="px-3 py-1 rounded-full bg-surface-container border border-white/5">
-          <span class="text-xs font-bold text-work-active">WEEK 43</span>
+          <span id="homeWeek" class="text-xs font-bold text-work-active">WEEK 1</span>
         </div>
       </div>
 
@@ -1120,23 +1108,45 @@
     function updateHomeStats() {
       const history = JSON.parse(localStorage.getItem('kineticHistory') || '[]');
       const routines = JSON.parse(localStorage.getItem('kineticRoutines') || '[]');
-      
+
+      // --- Live date, session count, week number ---
+      const today = new Date();
+      const dateEl = document.getElementById('homeDate');
+      const sessionEl = document.getElementById('homeSession');
+      const weekEl = document.getElementById('homeWeek');
+
+      if (dateEl) {
+        dateEl.textContent = 'Today, ' + today.toLocaleDateString('en-US', { month: 'long', day: 'numeric' });
+      }
+      if (sessionEl) {
+        // Session number = total completed sessions + 1
+        sessionEl.textContent = 'Session ' + (history.length + 1);
+      }
+      if (weekEl) {
+        // ISO week number
+        const d = new Date(Date.UTC(today.getFullYear(), today.getMonth(), today.getDate()));
+        d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay() || 7));
+        const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+        const weekNum = Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
+        weekEl.textContent = 'WEEK ' + weekNum;
+      }
+
+      // --- Consistency stats ---
       const uniqueDays = new Set(history.map(s => new Date(s.completedAt).toDateString()));
       const activeDays = uniqueDays.size;
-      
+
       const totalSecs = history.reduce((a, s) => a + s.durationSecs, 0);
       const totalMins = Math.floor(totalSecs / 60);
       const timeStr = totalMins >= 60 ? Math.floor(totalMins/60) + 'h ' + (totalMins%60) + 'm' : totalMins + 'm';
-      
+
       const el_days = document.getElementById('statActiveDays');
       const el_time = document.getElementById('statTimeTrained');
       const el_routines = document.getElementById('statRoutines');
-      
+
       if (el_days) el_days.textContent = activeDays || '0';
       if (el_time) el_time.textContent = timeStr || '0m';
       if (el_routines) el_routines.textContent = routines.length || '0';
-      
-      const today = new Date();
+
       const weekDays = ['Su','M','T','W','T','F','S'];
       const container = document.getElementById('weeklyDots');
       if (!container) return;
