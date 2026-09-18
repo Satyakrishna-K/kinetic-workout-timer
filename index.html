@@ -277,19 +277,19 @@
           <div class="grid grid-cols-3 gap-2 mb-4">
             <div>
               <div class="text-[10px] font-bold text-text-tertiary uppercase tracking-wider mb-1">Active Days</div>
-              <div class="font-display font-bold text-xl">4 <span class="text-sm font-medium text-text-tertiary">/7</span></div>
+              <div class="font-display font-bold text-xl"><span id="statActiveDays">4</span> <span class="text-sm font-medium text-text-tertiary">/7</span></div>
             </div>
             <div>
               <div class="text-[10px] font-bold text-text-tertiary uppercase tracking-wider mb-1">Time Trained</div>
-              <div class="font-display font-bold text-xl text-work-active">42m</div>
+              <div class="font-display font-bold text-xl text-work-active" id="statTimeTrained">42m</div>
             </div>
             <div>
               <div class="text-[10px] font-bold text-text-tertiary uppercase tracking-wider mb-1">Routines</div>
-              <div class="font-display font-bold text-xl text-rest-active">6</div>
+              <div class="font-display font-bold text-xl text-rest-active" id="statRoutines">6</div>
             </div>
           </div>
           
-          <div class="flex items-center justify-between text-center pt-3 border-t border-white/5">
+          <div id="weeklyDots" class="flex items-center justify-between text-center pt-3 border-t border-white/5">
             <div class="flex flex-col gap-1 items-center">
               <span class="text-[10px] font-medium text-text-tertiary">M</span>
               <div class="w-6 h-6 rounded-full bg-work-active/20 flex items-center justify-center text-work-active"><span class="material-symbols-outlined text-[14px] font-bold">check</span></div>
@@ -346,6 +346,29 @@
   <!-- SCREEN 2: TIMER -->
   <section id="screen-timer" class="screen absolute inset-0 w-full h-full bg-surface hidden z-20 flex-col pb-6 overflow-y-auto hide-scrollbar">
     
+    <div id="completionOverlay" style="display:none" class="absolute inset-0 bg-surface/95 backdrop-blur-md z-50 flex flex-col items-center justify-center text-center px-8">
+      <div class="w-20 h-20 rounded-full bg-work-active/20 border-2 border-work-active flex items-center justify-center mb-6">
+        <span class="material-symbols-outlined text-work-active icon-fill text-[40px]">check_circle</span>
+      </div>
+      <div class="font-display text-3xl font-bold mb-2">Workout Complete!</div>
+      <div id="completionName" class="text-text-secondary text-sm mb-8">Tabata Extreme</div>
+      <div class="flex gap-8 mb-10">
+        <div class="text-center">
+          <div id="completionTime" class="font-display text-2xl font-bold text-work-active">00:00</div>
+          <div class="text-[10px] font-bold text-text-tertiary uppercase tracking-wider mt-1">Duration</div>
+        </div>
+        <div class="text-center">
+          <div id="completionRounds" class="font-display text-2xl font-bold text-rest-active">0/0</div>
+          <div class="text-[10px] font-bold text-text-tertiary uppercase tracking-wider mt-1">Rounds</div>
+        </div>
+      </div>
+      <button onclick="document.getElementById('completionOverlay').style.display='none'; showScreen('screen-home');" class="w-full h-14 rounded-full bg-surface-container-high font-bold text-sm mb-3 active:scale-95 transition-transform">Back to Home</button>
+      <button onclick="document.getElementById('completionOverlay').style.display='none'; startTimer(document.getElementById('timerRoutineTitle').textContent, currentWorkTime, currentRestTime, totalRounds);" class="w-full h-14 rounded-full bg-primary-container text-white font-bold text-sm active:scale-95 transition-transform flex items-center justify-center gap-2">
+        <span class="material-symbols-outlined icon-fill text-[20px]">replay</span>
+        Do it Again
+      </button>
+    </div>
+
     <!-- Sticky header -->
     <header class="sticky top-0 z-30 px-4 py-4 flex items-center justify-between bg-surface/80 backdrop-blur-md">
       <button onclick="confirmStop()" class="w-10 h-10 flex items-center justify-center rounded-full bg-surface-container-high/50 active:scale-95">
@@ -511,7 +534,7 @@
     <div class="px-4 pt-6 space-y-6 relative z-10">
       <!-- Title input -->
       <div class="flex items-center justify-between bg-surface-container p-4 rounded-2xl border border-white/5">
-        <input type="text" value="Custom Tabata" class="bg-transparent text-xl font-display font-bold outline-none w-full text-white placeholder-text-tertiary" />
+        <input type="text" id="builderTitleInput" value="Custom Tabata" oninput="updateBuilderState('title', this.value)" class="bg-transparent text-xl font-display font-bold outline-none w-full text-white placeholder-text-tertiary" />
         <div class="px-2 py-1 rounded bg-prep-state/10 border border-prep-state/30 text-[10px] font-bold text-prep-state tracking-widest shrink-0 ml-3 flex items-center gap-1">
           <div class="w-1.5 h-1.5 rounded-full bg-prep-state animate-pulse"></div>
           DRAFT
@@ -520,10 +543,10 @@
 
       <!-- Presets -->
       <div class="flex gap-2 overflow-x-auto hide-scrollbar -mx-4 px-4">
-        <button class="px-4 py-2 rounded-full bg-primary-container text-white text-xs font-bold tracking-wider shrink-0 shadow-lg">TABATA</button>
-        <button class="px-4 py-2 rounded-full bg-surface-container text-text-secondary text-xs font-bold tracking-wider shrink-0 border border-white/5">EMOM</button>
-        <button class="px-4 py-2 rounded-full bg-surface-container text-text-secondary text-xs font-bold tracking-wider shrink-0 border border-white/5">HIIT PYRAMID</button>
-        <button class="px-4 py-2 rounded-full bg-surface-container text-text-secondary text-xs font-bold tracking-wider shrink-0 border border-white/5">CUSTOM</button>
+        <button data-preset="tabata" onclick="applyPreset('tabata')" class="preset-pill px-4 py-2 rounded-full bg-primary-container text-white text-xs font-bold tracking-wider shrink-0 shadow-lg">TABATA</button>
+        <button data-preset="emom" onclick="applyPreset('emom')" class="preset-pill px-4 py-2 rounded-full bg-surface-container text-text-secondary text-xs font-bold tracking-wider shrink-0 border border-white/5">EMOM</button>
+        <button data-preset="pyramid" onclick="applyPreset('pyramid')" class="preset-pill px-4 py-2 rounded-full bg-surface-container text-text-secondary text-xs font-bold tracking-wider shrink-0 border border-white/5">HIIT PYRAMID</button>
+        <button data-preset="custom" onclick="applyPreset('custom')" class="preset-pill px-4 py-2 rounded-full bg-surface-container text-text-secondary text-xs font-bold tracking-wider shrink-0 border border-white/5">CUSTOM</button>
       </div>
 
       <!-- Computed summary -->
@@ -545,15 +568,19 @@
           <!-- Warmup -->
           <div class="bg-surface-container rounded-2xl p-4 border border-prep-state/20 relative overflow-hidden">
             <div class="absolute right-0 top-0 w-32 h-32 bg-prep-state/5 rounded-bl-full pointer-events-none"></div>
-            <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center justify-between">
               <div class="flex items-center gap-2">
                 <span class="material-symbols-outlined text-prep-state icon-fill">local_fire_department</span>
                 <span class="font-bold text-sm">Warmup</span>
               </div>
-              <!-- Toggle -->
-              <div class="w-10 h-6 bg-surface-container-highest rounded-full relative flex items-center p-1 cursor-pointer">
-                <div class="w-4 h-4 bg-text-tertiary rounded-full absolute left-1"></div>
+              <div id="warmupToggle" onclick="toggleBuilder('warmup')" class="w-10 h-6 bg-surface-container-highest rounded-full relative flex items-center p-1 cursor-pointer transition-colors">
+                <div id="warmupToggleKnob" class="w-4 h-4 bg-text-tertiary rounded-full absolute left-1 transition-all"></div>
               </div>
+            </div>
+            <div id="warmupControls" style="display:none;" class="flex items-center justify-between pt-2 border-t border-prep-state/20 mt-3">
+              <button onclick="adjustBuilder('warmup', -15)" class="w-8 h-8 rounded-full bg-black/20 flex items-center justify-center"><span class="material-symbols-outlined text-white text-sm">remove</span></button>
+              <div id="builderWarmupTime" class="font-display font-bold text-xl text-prep-state">00:30</div>
+              <button onclick="adjustBuilder('warmup', 15)" class="w-8 h-8 rounded-full bg-black/20 flex items-center justify-center"><span class="material-symbols-outlined text-white text-sm">add</span></button>
             </div>
           </div>
 
@@ -568,18 +595,19 @@
             </div>
             
             <div class="flex items-center justify-between mb-4">
-              <button class="w-10 h-10 rounded-full bg-black/30 flex items-center justify-center active:scale-95">
+              <button onclick="adjustBuilder('work', -5)" class="w-10 h-10 rounded-full bg-black/30 flex items-center justify-center active:scale-95">
                 <span class="material-symbols-outlined text-white">remove</span>
               </button>
-              <div class="font-display text-4xl font-bold text-work-active">00:20</div>
-              <button class="w-10 h-10 rounded-full bg-black/30 flex items-center justify-center active:scale-95">
+              <div id="builderWorkTime" class="font-display text-4xl font-bold text-work-active">00:20</div>
+              <button onclick="adjustBuilder('work', 5)" class="w-10 h-10 rounded-full bg-black/30 flex items-center justify-center active:scale-95">
                 <span class="material-symbols-outlined text-white">add</span>
               </button>
             </div>
             
-            <div class="w-full bg-black/40 rounded-full h-2 relative">
-              <div class="absolute left-0 top-0 h-full bg-work-active rounded-full" style="width: 25%"></div>
-              <div class="absolute left-[25%] top-1/2 -translate-y-1/2 w-4 h-4 bg-white rounded-full shadow border-2 border-work-active"></div>
+            <div class="w-full bg-black/40 rounded-full h-2 relative mt-4">
+              <input type="range" id="workSlider" min="5" max="120" step="5" value="20" oninput="updateBuilderState('work', parseInt(this.value))" class="w-full h-full opacity-0 absolute inset-0 cursor-pointer z-10">
+              <div id="workSliderFill" class="absolute left-0 top-0 h-full bg-work-active rounded-full pointer-events-none" style="width: 15%"></div>
+              <div id="workSliderThumb" class="absolute left-[15%] top-1/2 -translate-y-1/2 w-4 h-4 bg-white rounded-full shadow border-2 border-work-active -ml-2 pointer-events-none"></div>
             </div>
             <div class="flex justify-between mt-2 text-[10px] text-text-tertiary font-medium">
               <span>5s</span><span>120s</span>
@@ -597,21 +625,22 @@
             </div>
             
             <div class="flex items-center justify-between mb-4">
-              <button class="w-10 h-10 rounded-full bg-black/30 flex items-center justify-center active:scale-95">
+              <button onclick="adjustBuilder('rest', -5)" class="w-10 h-10 rounded-full bg-black/30 flex items-center justify-center active:scale-95">
                 <span class="material-symbols-outlined text-white">remove</span>
               </button>
-              <div class="font-display text-4xl font-bold text-rest-active">00:10</div>
-              <button class="w-10 h-10 rounded-full bg-black/30 flex items-center justify-center active:scale-95">
+              <div id="builderRestTime" class="font-display text-4xl font-bold text-rest-active">00:10</div>
+              <button onclick="adjustBuilder('rest', 5)" class="w-10 h-10 rounded-full bg-black/30 flex items-center justify-center active:scale-95">
                 <span class="material-symbols-outlined text-white">add</span>
               </button>
             </div>
             
-            <div class="w-full bg-black/40 rounded-full h-2 relative">
-              <div class="absolute left-0 top-0 h-full bg-rest-active rounded-full" style="width: 15%"></div>
-              <div class="absolute left-[15%] top-1/2 -translate-y-1/2 w-4 h-4 bg-white rounded-full shadow border-2 border-rest-active"></div>
+            <div class="w-full bg-black/40 rounded-full h-2 relative mt-4">
+              <input type="range" id="restSlider" min="0" max="120" step="5" value="10" oninput="updateBuilderState('rest', parseInt(this.value))" class="w-full h-full opacity-0 absolute inset-0 cursor-pointer z-10">
+              <div id="restSliderFill" class="absolute left-0 top-0 h-full bg-rest-active rounded-full pointer-events-none" style="width: 8%"></div>
+              <div id="restSliderThumb" class="absolute left-[8%] top-1/2 -translate-y-1/2 w-4 h-4 bg-white rounded-full shadow border-2 border-rest-active -ml-2 pointer-events-none"></div>
             </div>
             <div class="flex justify-between mt-2 text-[10px] text-text-tertiary font-medium">
-              <span>5s</span><span>120s</span>
+              <span>0s</span><span>120s</span>
             </div>
           </div>
 
@@ -622,11 +651,11 @@
               <span class="font-bold text-sm">Total Rounds</span>
             </div>
             <div class="flex items-center gap-4">
-              <button class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center active:scale-95">
+              <button onclick="adjustBuilder('rounds', -1)" class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center active:scale-95">
                 <span class="material-symbols-outlined text-sm">remove</span>
               </button>
-              <span class="font-display text-2xl font-bold">8</span>
-              <button class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center active:scale-95">
+              <span id="builderRounds" class="font-display text-2xl font-bold">8</span>
+              <button onclick="adjustBuilder('rounds', 1)" class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center active:scale-95">
                 <span class="material-symbols-outlined text-sm">add</span>
               </button>
             </div>
@@ -639,9 +668,14 @@
                 <span class="material-symbols-outlined text-secondary icon-fill">ac_unit</span>
                 <span class="font-bold text-sm">Cooldown</span>
               </div>
-              <div class="w-10 h-6 bg-surface-container-highest rounded-full relative flex items-center p-1 cursor-pointer">
-                <div class="w-4 h-4 bg-text-tertiary rounded-full absolute left-1"></div>
+              <div id="cooldownToggle" onclick="toggleBuilder('cooldown')" class="w-10 h-6 bg-surface-container-highest rounded-full relative flex items-center p-1 cursor-pointer transition-colors">
+                <div id="cooldownToggleKnob" class="w-4 h-4 bg-text-tertiary rounded-full absolute left-1 transition-all"></div>
               </div>
+            </div>
+            <div id="cooldownControls" style="display:none;" class="flex items-center justify-between pt-2 border-t border-secondary/20 mt-3">
+              <button onclick="adjustBuilder('cooldown', -15)" class="w-8 h-8 rounded-full bg-black/20 flex items-center justify-center"><span class="material-symbols-outlined text-white text-sm">remove</span></button>
+              <div id="builderCooldownTime" class="font-display font-bold text-xl text-secondary">01:00</div>
+              <button onclick="adjustBuilder('cooldown', 15)" class="w-8 h-8 rounded-full bg-black/20 flex items-center justify-center"><span class="material-symbols-outlined text-white text-sm">add</span></button>
             </div>
           </div>
         </div>
@@ -690,12 +724,108 @@
 
     <!-- Sticky Bottom CTA -->
     <div class="fixed bottom-0 left-0 w-full p-4 bg-surface/80 backdrop-blur-md border-t border-white/5 flex gap-3 z-30">
-      <button onclick="showScreen('screen-home')" class="px-6 h-14 rounded-full bg-surface-container-high font-bold text-sm flex items-center justify-center active:scale-95 transition-transform">
+      <button id="saveRoutineBtn" onclick="saveRoutine()" class="px-6 h-14 rounded-full bg-surface-container-high font-bold text-sm flex items-center justify-center active:scale-95 transition-transform w-28">
         Save
       </button>
-      <button onclick="startTimer('Custom Tabata', 20, 10, 8)" class="flex-1 h-14 rounded-full bg-gradient-to-r from-primary-container to-prep-state text-white font-bold text-lg shadow-[0_0_15px_rgba(255,87,34,0.3)] active:scale-95 transition-transform flex items-center justify-center">
+      <button onclick="startTimer(builderState.title, builderState.work, builderState.rest, builderState.rounds)" class="flex-1 h-14 rounded-full bg-gradient-to-r from-primary-container to-prep-state text-white font-bold text-lg shadow-[0_0_15px_rgba(255,87,34,0.3)] active:scale-95 transition-transform flex items-center justify-center">
         Start Routine
       </button>
+    </div>
+  </section>
+
+  <!-- SCREEN 4: ROUTINES -->
+  <section id="screen-routines" class="screen absolute inset-0 w-full h-full bg-surface hidden z-20 overflow-y-auto hide-scrollbar pb-28">
+    <header class="sticky top-0 z-20 px-4 py-4 flex items-center justify-between bg-surface/80 backdrop-blur-md">
+      <button onclick="showScreen('screen-home')" class="w-10 h-10 flex items-center justify-center rounded-full bg-surface-container-high/50 active:scale-95">
+        <span class="material-symbols-outlined text-[24px]">arrow_back</span>
+      </button>
+      <h1 class="font-display font-bold text-lg mr-10 flex-1 text-center">My Routines</h1>
+    </header>
+    <div class="px-4 space-y-6 mt-4">
+      <div>
+        <h3 class="font-display font-bold text-xl mb-4">Saved Routines</h3>
+        <div id="emptyRoutinesState" class="text-center py-8 text-text-tertiary" style="display:none;">
+          <p class="text-sm mb-4">No saved routines yet</p>
+          <button onclick="showScreen('screen-builder')" class="px-6 py-2 rounded-full bg-surface-container-high font-bold text-sm active:scale-95 transition-transform">Create Routine</button>
+        </div>
+        <div id="savedRoutinesList" class="space-y-3"></div>
+      </div>
+      <div>
+        <h3 class="font-display font-bold text-xl mb-4">Built-in Protocols</h3>
+        <div class="space-y-3">
+          <!-- Built-in 1 -->
+          <div class="bg-surface-container rounded-2xl p-4 border border-white/5 flex items-center gap-4">
+            <div class="flex-1 min-w-0">
+              <div class="font-bold text-sm truncate text-white">Tabata Classic</div>
+              <div class="text-xs text-text-tertiary mt-0.5">20s work &bull; 10s rest &bull; 8 rounds</div>
+            </div>
+            <div class="text-xs font-bold text-work-active font-display">04:00</div>
+            <button onclick="startTimer('Tabata Classic', 20, 10, 8)" class="w-9 h-9 rounded-full bg-work-active/20 flex items-center justify-center text-work-active active:scale-90 transition-transform">
+              <span class="material-symbols-outlined icon-fill text-[18px]">play_arrow</span>
+            </button>
+          </div>
+          <!-- Built-in 2 -->
+          <div class="bg-surface-container rounded-2xl p-4 border border-white/5 flex items-center gap-4">
+            <div class="flex-1 min-w-0">
+              <div class="font-bold text-sm truncate text-white">EMOM Target</div>
+              <div class="text-xs text-text-tertiary mt-0.5">60s work &bull; 0s rest &bull; 10 rounds</div>
+            </div>
+            <div class="text-xs font-bold text-work-active font-display">10:00</div>
+            <button onclick="startTimer('EMOM Target', 60, 0, 10)" class="w-9 h-9 rounded-full bg-work-active/20 flex items-center justify-center text-work-active active:scale-90 transition-transform">
+              <span class="material-symbols-outlined icon-fill text-[18px]">play_arrow</span>
+            </button>
+          </div>
+          <!-- Built-in 3 -->
+          <div class="bg-surface-container rounded-2xl p-4 border border-white/5 flex items-center gap-4">
+            <div class="flex-1 min-w-0">
+              <div class="font-bold text-sm truncate text-white">Boxing 3/1</div>
+              <div class="text-xs text-text-tertiary mt-0.5">180s work &bull; 60s rest &bull; 5 rounds</div>
+            </div>
+            <div class="text-xs font-bold text-work-active font-display">20:00</div>
+            <button onclick="startTimer('Boxing 3/1', 180, 60, 5)" class="w-9 h-9 rounded-full bg-work-active/20 flex items-center justify-center text-work-active active:scale-90 transition-transform">
+              <span class="material-symbols-outlined icon-fill text-[18px]">play_arrow</span>
+            </button>
+          </div>
+          <!-- Built-in 4 -->
+          <div class="bg-surface-container rounded-2xl p-4 border border-white/5 flex items-center gap-4">
+            <div class="flex-1 min-w-0">
+              <div class="font-bold text-sm truncate text-white">HIIT Pyramid</div>
+              <div class="text-xs text-text-tertiary mt-0.5">30s work &bull; 30s rest &bull; 6 rounds</div>
+            </div>
+            <div class="text-xs font-bold text-work-active font-display">06:00</div>
+            <button onclick="startTimer('HIIT Pyramid', 30, 30, 6)" class="w-9 h-9 rounded-full bg-work-active/20 flex items-center justify-center text-work-active active:scale-90 transition-transform">
+              <span class="material-symbols-outlined icon-fill text-[18px]">play_arrow</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCREEN 5: HISTORY -->
+  <section id="screen-history" class="screen absolute inset-0 w-full h-full bg-surface hidden z-20 overflow-y-auto hide-scrollbar pb-28">
+    <header class="sticky top-0 z-20 px-4 py-4 flex items-center justify-between bg-surface/80 backdrop-blur-md">
+      <button onclick="showScreen('screen-home')" class="w-10 h-10 flex items-center justify-center rounded-full bg-surface-container-high/50 active:scale-95">
+        <span class="material-symbols-outlined text-[24px]">arrow_back</span>
+      </button>
+      <h1 class="font-display font-bold text-lg mr-10 flex-1 text-center">Session History</h1>
+    </header>
+    <div class="px-4 mt-4 space-y-6">
+      <div class="grid grid-cols-3 gap-2">
+        <div class="bg-surface-container rounded-xl p-3 border border-white/5 text-center">
+          <div class="text-[10px] font-bold text-text-tertiary uppercase tracking-wider mb-1">Sessions</div>
+          <div id="histStatSessions" class="font-display font-bold text-xl">0</div>
+        </div>
+        <div class="bg-surface-container rounded-xl p-3 border border-white/5 text-center">
+          <div class="text-[10px] font-bold text-text-tertiary uppercase tracking-wider mb-1">Time</div>
+          <div id="histStatTime" class="font-display font-bold text-xl text-work-active">0s</div>
+        </div>
+        <div class="bg-surface-container rounded-xl p-3 border border-white/5 text-center">
+          <div class="text-[10px] font-bold text-text-tertiary uppercase tracking-wider mb-1">Streak</div>
+          <div id="histStatStreak" class="font-display font-bold text-xl text-rest-active">0</div>
+        </div>
+      </div>
+      <div id="historyList" class="space-y-3"></div>
     </div>
   </section>
 
@@ -705,11 +835,11 @@
       <span class="material-symbols-outlined icon-fill text-[24px]">timer</span>
       <span class="text-[9px] font-bold tracking-wide">Home</span>
     </button>
-    <button onclick="alert('Coming soon')" class="flex flex-col items-center gap-1 w-16 p-2 text-text-secondary hover:text-white transition-colors">
+    <button onclick="showScreen('screen-routines')" class="flex flex-col items-center gap-1 w-16 p-2 text-text-secondary hover:text-white transition-colors">
       <span class="material-symbols-outlined text-[24px]">fitness_center</span>
       <span class="text-[9px] font-bold tracking-wide">Routines</span>
     </button>
-    <button onclick="alert('Coming soon')" class="flex flex-col items-center gap-1 w-16 p-2 text-text-secondary hover:text-white transition-colors">
+    <button onclick="showScreen('screen-history')" class="flex flex-col items-center gap-1 w-16 p-2 text-text-secondary hover:text-white transition-colors">
       <span class="material-symbols-outlined text-[24px]">calendar_month</span>
       <span class="text-[9px] font-bold tracking-wide">History</span>
     </button>
@@ -720,18 +850,308 @@
   </nav>
 
   <script>
+    // State & Utils
+    const builderState = {
+      title: 'Custom Tabata',
+      work: 20,
+      rest: 10,
+      rounds: 8,
+      warmup: 30,
+      warmupEnabled: false,
+      cooldown: 60,
+      cooldownEnabled: false
+    };
+
+    const PRESETS = {
+      tabata:   { title: 'Tabata Classic',     work: 20, rest: 10, rounds: 8,  warmup: 0,  warmupEnabled: false, cooldown: 0,  cooldownEnabled: false },
+      emom:     { title: 'EMOM Power Hour',    work: 50, rest: 10, rounds: 10, warmup: 60, warmupEnabled: true,  cooldown: 60, cooldownEnabled: true  },
+      pyramid:  { title: 'HIIT Pyramid',       work: 45, rest: 15, rounds: 6,  warmup: 45, warmupEnabled: true,  cooldown: 90, cooldownEnabled: true  },
+      custom:   { title: 'Custom Free Build',  work: 30, rest: 30, rounds: 5,  warmup: 0,  warmupEnabled: false, cooldown: 0,  cooldownEnabled: false },
+    };
+
+    function formatTime(secs) {
+      const m = Math.floor(secs / 60).toString().padStart(2, '0');
+      const s = (secs % 60).toString().padStart(2, '0');
+      return `${m}:${s}`;
+    }
+    
+    function formatTimeShort(secs) {
+      if (secs < 60) return secs + 's';
+      if (secs < 3600) return Math.floor(secs/60) + 'm';
+      return Math.floor(secs/3600) + 'h ' + Math.floor((secs%3600)/60) + 'm';
+    }
+
     // Navigation
     function showScreen(id) {
       document.querySelectorAll('.screen').forEach(s => s.classList.add('hidden'));
-      document.getElementById(id).classList.remove('hidden');
+      const target = document.getElementById(id);
+      if (target) target.classList.remove('hidden');
       
       const bottomNav = document.getElementById('bottomNav');
-      if (id === 'screen-home') {
-        bottomNav.style.display = 'flex';
-        stopTimer();
-      } else {
-        bottomNav.style.display = 'none';
+      const isTimerScreen = id === 'screen-timer';
+      const isBuilderScreen = id === 'screen-builder';
+      bottomNav.style.display = (isTimerScreen || isBuilderScreen) ? 'none' : 'flex';
+      
+      const tabMap = { 'screen-home': 0, 'screen-routines': 1, 'screen-history': 2 };
+      const activeIdx = tabMap[id] ?? -1;
+      document.querySelectorAll('#bottomNav button').forEach((btn, i) => {
+        if (i === activeIdx) {
+          btn.classList.add('text-primary-container', 'bg-white/5');
+          btn.classList.remove('text-text-secondary');
+        } else {
+          btn.classList.remove('text-primary-container', 'bg-white/5');
+          btn.classList.add('text-text-secondary');
+        }
+      });
+      
+      if (id === 'screen-home') { stopTimer(); updateHomeStats(); }
+      if (id === 'screen-routines') renderRoutines();
+      if (id === 'screen-history') renderHistory();
+    }
+
+    // Builder Logic
+    function updateBuilderState(key, val) {
+      if (key === 'title') { builderState.title = val; return; }
+      builderState[key] = val;
+      syncBuilderUI();
+    }
+
+    function adjustBuilder(key, delta) {
+      let val = builderState[key] + delta;
+      if (key === 'work' || key === 'rest') {
+        val = Math.max(key==='work'?5:0, Math.min(120, val));
+      } else if (key === 'rounds') {
+        val = Math.max(1, Math.min(99, val));
+      } else if (key === 'warmup' || key === 'cooldown') {
+        val = Math.max(15, Math.min(300, val));
       }
+      builderState[key] = val;
+      syncBuilderUI();
+    }
+
+    function toggleBuilder(key) {
+      builderState[key+'Enabled'] = !builderState[key+'Enabled'];
+      syncBuilderUI();
+    }
+
+    function applyPreset(key) {
+      Object.assign(builderState, PRESETS[key]);
+      document.getElementById('builderTitleInput').value = builderState.title;
+      
+      document.querySelectorAll('.preset-pill').forEach(btn => {
+        if (btn.dataset.preset === key) {
+          btn.className = 'preset-pill px-4 py-2 rounded-full bg-primary-container text-white text-xs font-bold tracking-wider shrink-0 shadow-lg';
+        } else {
+          btn.className = 'preset-pill px-4 py-2 rounded-full bg-surface-container text-text-secondary text-xs font-bold tracking-wider shrink-0 border border-white/5';
+        }
+      });
+      syncBuilderUI();
+    }
+
+    function syncBuilderUI() {
+      // Inputs
+      document.getElementById('builderWorkTime').textContent = formatTime(builderState.work);
+      document.getElementById('builderRestTime').textContent = formatTime(builderState.rest);
+      document.getElementById('builderRounds').textContent = builderState.rounds;
+      document.getElementById('builderWarmupTime').textContent = formatTime(builderState.warmup);
+      document.getElementById('builderCooldownTime').textContent = formatTime(builderState.cooldown);
+      
+      document.getElementById('workSlider').value = builderState.work;
+      document.getElementById('restSlider').value = builderState.rest;
+      
+      document.getElementById('workSliderFill').style.width = ((builderState.work - 5) / 115 * 100) + '%';
+      document.getElementById('workSliderThumb').style.left = ((builderState.work - 5) / 115 * 100) + '%';
+      
+      const restPct = builderState.rest / 120 * 100;
+      document.getElementById('restSliderFill').style.width = restPct + '%';
+      document.getElementById('restSliderThumb').style.left = restPct + '%';
+      
+      // Toggles
+      const wT = document.getElementById('warmupToggle');
+      const wK = document.getElementById('warmupToggleKnob');
+      const wC = document.getElementById('warmupControls');
+      if (builderState.warmupEnabled) {
+        wT.classList.add('bg-prep-state/30'); wT.classList.remove('bg-surface-container-highest');
+        wK.classList.add('left-5', 'bg-prep-state'); wK.classList.remove('left-1', 'bg-text-tertiary');
+        wC.style.display = 'flex';
+      } else {
+        wT.classList.remove('bg-prep-state/30'); wT.classList.add('bg-surface-container-highest');
+        wK.classList.remove('left-5', 'bg-prep-state'); wK.classList.add('left-1', 'bg-text-tertiary');
+        wC.style.display = 'none';
+      }
+      
+      const cT = document.getElementById('cooldownToggle');
+      const cK = document.getElementById('cooldownToggleKnob');
+      const cC = document.getElementById('cooldownControls');
+      if (builderState.cooldownEnabled) {
+        cT.classList.add('bg-secondary/30'); cT.classList.remove('bg-surface-container-highest');
+        cK.classList.add('left-5', 'bg-secondary'); cK.classList.remove('left-1', 'bg-text-tertiary');
+        cC.style.display = 'flex';
+      } else {
+        cT.classList.remove('bg-secondary/30'); cT.classList.add('bg-surface-container-highest');
+        cK.classList.remove('left-5', 'bg-secondary'); cK.classList.add('left-1', 'bg-text-tertiary');
+        cC.style.display = 'none';
+      }
+
+      updateBuilderSummary();
+    }
+
+    function updateBuilderSummary() {
+      let total = builderState.work * builderState.rounds + builderState.rest * builderState.rounds;
+      if (builderState.warmupEnabled) total += builderState.warmup;
+      if (builderState.cooldownEnabled) total += builderState.cooldown;
+      document.getElementById('builderTotalTime').textContent = formatTime(total);
+      document.getElementById('builderTotalRounds').textContent = builderState.rounds;
+    }
+
+    function saveRoutine() {
+      const routines = JSON.parse(localStorage.getItem('kineticRoutines') || '[]');
+      routines.push({
+        id: Date.now().toString(),
+        name: builderState.title,
+        work: builderState.work,
+        rest: builderState.rest,
+        rounds: builderState.rounds,
+        warmup: builderState.warmup,
+        warmupEnabled: builderState.warmupEnabled,
+        createdAt: new Date().toISOString()
+      });
+      localStorage.setItem('kineticRoutines', JSON.stringify(routines));
+      
+      const btn = document.getElementById('saveRoutineBtn');
+      const orig = btn.innerHTML;
+      btn.innerHTML = '<span class="material-symbols-outlined icon-fill text-work-neon text-[18px]">check_circle</span><span class="text-work-neon text-sm font-bold ml-1">Saved!</span>';
+      setTimeout(() => { btn.innerHTML = orig; showScreen('screen-routines'); }, 1200);
+      updateHomeStats();
+    }
+
+    // Routines Logic
+    function renderRoutines() {
+      const routines = JSON.parse(localStorage.getItem('kineticRoutines') || '[]');
+      const list = document.getElementById('savedRoutinesList');
+      const empty = document.getElementById('emptyRoutinesState');
+      if (routines.length === 0) {
+        list.innerHTML = '';
+        empty.style.display = 'block';
+        return;
+      }
+      empty.style.display = 'none';
+      list.innerHTML = routines.map(r => `
+        <div class="bg-surface-container rounded-2xl p-4 border border-white/5 flex items-center gap-4">
+          <div class="flex-1 min-w-0">
+            <div class="font-bold text-sm truncate text-white">${r.name}</div>
+            <div class="text-xs text-text-tertiary mt-0.5">${r.work}s work &bull; ${r.rest}s rest &bull; ${r.rounds} rounds</div>
+          </div>
+          <div class="text-xs font-bold text-work-active font-display">${formatTime(r.work * r.rounds + r.rest * r.rounds)}</div>
+          <button onclick="startTimer('${r.name}', ${r.work}, ${r.rest}, ${r.rounds})" class="w-9 h-9 rounded-full bg-work-active/20 flex items-center justify-center text-work-active active:scale-90 transition-transform">
+            <span class="material-symbols-outlined icon-fill text-[18px]">play_arrow</span>
+          </button>
+          <button onclick="deleteRoutine('${r.id}')" class="w-9 h-9 rounded-full bg-surface-container-high flex items-center justify-center text-text-tertiary hover:text-error active:scale-90 transition-all">
+            <span class="material-symbols-outlined text-[18px]">delete</span>
+          </button>
+        </div>
+      `).join('');
+    }
+
+    function deleteRoutine(id) {
+      let routines = JSON.parse(localStorage.getItem('kineticRoutines') || '[]');
+      routines = routines.filter(r => r.id !== id);
+      localStorage.setItem('kineticRoutines', JSON.stringify(routines));
+      renderRoutines();
+      updateHomeStats();
+    }
+
+    // History Logic
+    function renderHistory() {
+      const history = JSON.parse(localStorage.getItem('kineticHistory') || '[]');
+      const list = document.getElementById('historyList');
+      const stats = computeHistoryStats(history);
+      document.getElementById('histStatSessions').textContent = stats.totalSessions;
+      document.getElementById('histStatTime').textContent = formatTimeShort(stats.totalSecs);
+      document.getElementById('histStatStreak').textContent = stats.currentStreak;
+      
+      if (history.length === 0) {
+        list.innerHTML = `<div class="text-center py-12 text-text-tertiary">
+          <span class="material-symbols-outlined text-[48px] mb-3 block">calendar_month</span>
+          <p class="text-sm">No sessions yet.<br>Complete a workout to see your history.</p>
+        </div>`;
+        return;
+      }
+      list.innerHTML = [...history].reverse().map(s => `
+        <div class="bg-surface-container rounded-2xl p-4 border border-white/5">
+          <div class="flex items-start justify-between mb-2">
+            <div>
+              <div class="font-bold text-sm">${s.name}</div>
+              <div class="text-xs text-text-tertiary mt-0.5">${new Date(s.completedAt).toLocaleDateString('en-US', {weekday:'short', month:'short', day:'numeric'})}</div>
+            </div>
+            <div class="text-right">
+              <div class="text-sm font-bold font-display text-work-active">${formatTime(s.durationSecs)}</div>
+              <div class="text-[10px] text-text-tertiary">${s.roundsCompleted}/${s.rounds} rounds</div>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 mt-2">
+            <div class="flex items-center gap-1.5">
+              <div class="w-2 h-2 rounded-full bg-work-active"></div>
+              <span class="text-xs text-text-secondary">${s.work}s work</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <div class="w-2 h-2 rounded-full bg-rest-active"></div>
+              <span class="text-xs text-text-secondary">${s.rest}s rest</span>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function computeHistoryStats(history) {
+      const totalSessions = history.length;
+      const totalSecs = history.reduce((a, s) => a + s.durationSecs, 0);
+      const days = [...new Set(history.map(s => new Date(s.completedAt).toDateString()))];
+      let streak = 0;
+      let d = new Date();
+      while (days.includes(d.toDateString())) {
+        streak++;
+        d.setDate(d.getDate() - 1);
+      }
+      return { totalSessions, totalSecs, currentStreak: streak };
+    }
+
+    // Home Stats Logic
+    function updateHomeStats() {
+      const history = JSON.parse(localStorage.getItem('kineticHistory') || '[]');
+      const routines = JSON.parse(localStorage.getItem('kineticRoutines') || '[]');
+      
+      const uniqueDays = new Set(history.map(s => new Date(s.completedAt).toDateString()));
+      const activeDays = uniqueDays.size;
+      
+      const totalSecs = history.reduce((a, s) => a + s.durationSecs, 0);
+      const totalMins = Math.floor(totalSecs / 60);
+      const timeStr = totalMins >= 60 ? Math.floor(totalMins/60) + 'h ' + (totalMins%60) + 'm' : totalMins + 'm';
+      
+      const el_days = document.getElementById('statActiveDays');
+      const el_time = document.getElementById('statTimeTrained');
+      const el_routines = document.getElementById('statRoutines');
+      
+      if (el_days) el_days.textContent = activeDays || '0';
+      if (el_time) el_time.textContent = timeStr || '0m';
+      if (el_routines) el_routines.textContent = routines.length || '0';
+      
+      const today = new Date();
+      const weekDays = ['Su','M','T','W','T','F','S'];
+      const container = document.getElementById('weeklyDots');
+      if (!container) return;
+      container.innerHTML = weekDays.map((day, i) => {
+        const d = new Date(today);
+        d.setDate(today.getDate() - (today.getDay() - i));
+        const worked = history.some(s => new Date(s.completedAt).toDateString() === d.toDateString());
+        const isToday = d.toDateString() === today.toDateString();
+        return `<div class="flex flex-col gap-1 items-center">
+          <span class="text-[10px] font-medium ${isToday ? 'text-white' : 'text-text-tertiary'}">${day}</span>
+          <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs ${
+            worked ? 'bg-work-active/20 text-work-active' + (isToday ? ' ring-1 ring-work-active' : '') : 'text-text-tertiary'
+          }">${worked ? '<span class="material-symbols-outlined text-[14px] font-bold">check</span>' : (isToday ? '&bull;' : d.getDate())}</div>
+        </div>`;
+      }).join('');
     }
 
     // Timer Logic
@@ -748,12 +1168,6 @@
     let lastTap = 0;
     
     const CIRCUMFERENCE = 741.4;
-
-    function formatTime(secs) {
-      const m = Math.floor(secs / 60).toString().padStart(2, '0');
-      const s = (secs % 60).toString().padStart(2, '0');
-      return `${m}:${s}`;
-    }
 
     function startTimer(title, workT, restT, rounds) {
       document.getElementById('timerRoutineTitle').innerText = title;
@@ -849,7 +1263,7 @@
         stateLabel.className = 'text-[10px] font-bold uppercase tracking-widest text-work-active';
         stateChip.className = 'flex items-center gap-1.5 px-3 py-1 rounded-full border border-work-active bg-surface-container-high/80 backdrop-blur-sm mb-3';
         display.style.textShadow = '0 0 20px rgba(255,87,34,0.5)';
-        cadenceCue.innerText = 'Max Cadence • Explosive Drive';
+        cadenceCue.innerText = 'Max Cadence \u2022 Explosive Drive';
         nextUpLabel.innerText = 'Next Up: Rest & Recovery';
         
         // Next up card shows rest (or next round work if no rest)
@@ -874,7 +1288,7 @@
         stateLabel.className = 'text-[10px] font-bold uppercase tracking-widest text-rest-active';
         stateChip.className = 'flex items-center gap-1.5 px-3 py-1 rounded-full border border-rest-active bg-surface-container-high/80 backdrop-blur-sm mb-3';
         display.style.textShadow = '0 0 20px rgba(0,229,255,0.5)';
-        cadenceCue.innerText = 'Deep Inhale • Reset Cadence';
+        cadenceCue.innerText = 'Deep Inhale \u2022 Reset Cadence';
         nextUpLabel.innerText = 'Next Up: High Intensity';
         
         // Next up card shows next work
@@ -913,8 +1327,25 @@
 
     function completeWorkout() {
       stopTimer();
-      alert("Workout Complete! Great job.");
-      showScreen('screen-home');
+      const history = JSON.parse(localStorage.getItem('kineticHistory') || '[]');
+      history.push({
+        id: Date.now().toString(),
+        name: document.getElementById('timerRoutineTitle').textContent,
+        work: currentWorkTime,
+        rest: currentRestTime,
+        rounds: totalRounds,
+        roundsCompleted: currentRound,
+        durationSecs: totalElapsedSeconds,
+        completedAt: new Date().toISOString()
+      });
+      localStorage.setItem('kineticHistory', JSON.stringify(history));
+      
+      document.getElementById('completionOverlay').style.display = 'flex';
+      document.getElementById('completionName').textContent = document.getElementById('timerRoutineTitle').textContent;
+      document.getElementById('completionTime').textContent = formatTime(totalElapsedSeconds);
+      document.getElementById('completionRounds').textContent = `${currentRound} / ${totalRounds} rounds`;
+      
+      updateHomeStats();
     }
 
     function incrementRound() {
@@ -950,6 +1381,10 @@
       document.getElementById('timerDisplay').style.opacity = isPaused ? '0.5' : '1';
       document.getElementById('dialGlowDiv').style.opacity = isPaused ? '0.4' : '1';
     }
+
+    // Init
+    syncBuilderUI();
+    updateHomeStats();
   </script>
 </body>
 </html>
